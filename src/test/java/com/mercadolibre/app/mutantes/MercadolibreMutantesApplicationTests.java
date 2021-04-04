@@ -23,9 +23,7 @@ class MercadolibreMutantesApplicationTests {
 		Adn dna = new Adn();
 		dna.setDna(arrayDna);
 		HttpEntity<Adn> body = new HttpEntity<Adn>(dna);
-		ResponseEntity<Adn> response = restTemplate().exchange(
-				"http://3.131.137.77:80/mutant", 
-				HttpMethod.POST, body,  Adn.class);
+		ResponseEntity<Adn> response = exchangeService(body);
 		assertEquals(200, response.getStatusCodeValue());
 	}
 	
@@ -35,9 +33,7 @@ class MercadolibreMutantesApplicationTests {
 		Adn dna = new Adn();
 		dna.setDna(arrayDna);
 		HttpEntity<Adn> body = new HttpEntity<Adn>(dna);
-		ResponseEntity<Adn> response = restTemplate().exchange(
-				"http://3.131.137.77:80/mutant", 
-				HttpMethod.POST, body,  Adn.class);
+		ResponseEntity<Adn> response = exchangeService(body);
 		assertEquals(200, response.getStatusCodeValue());
 	}
 	
@@ -47,9 +43,7 @@ class MercadolibreMutantesApplicationTests {
 		Adn dna = new Adn();
 		dna.setDna(arrayDna);
 		HttpEntity<Adn> body = new HttpEntity<Adn>(dna);
-		ResponseEntity<Adn> response = restTemplate().exchange(
-				"http://3.131.137.77:80/mutant", 
-				HttpMethod.POST, body,  Adn.class);
+		ResponseEntity<Adn> response = exchangeService(body);
 		assertEquals(200, response.getStatusCodeValue());
 	}
 	
@@ -59,9 +53,7 @@ class MercadolibreMutantesApplicationTests {
 		Adn dna = new Adn();
 		dna.setDna(arrayDna);
 		HttpEntity<Adn> body = new HttpEntity<Adn>(dna);
-		ResponseEntity<Adn> response = restTemplate().exchange(
-				"http://3.131.137.77:80/mutant", 
-				HttpMethod.POST, body,  Adn.class);
+		ResponseEntity<Adn> response = exchangeService(body);
 		assertEquals(200, response.getStatusCodeValue());
 	}
 	
@@ -70,10 +62,14 @@ class MercadolibreMutantesApplicationTests {
 		Adn dna = new Adn();
 		dna.setDna(arrayDna);
 		HttpEntity<Adn> body = new HttpEntity<Adn>(dna);
-		ResponseEntity<Adn> response = restTemplate().exchange(
+		ResponseEntity<Adn> response = exchangeService(body);
+		assertEquals(403, response.getStatusCodeValue());
+	}
+	
+	private ResponseEntity<Adn> exchangeService(HttpEntity<Adn> body) {
+		return restTemplate().exchange(
 				"http://3.131.137.77:80/mutant", 
 				HttpMethod.POST, body,  Adn.class);
-		assertEquals(403, response.getStatusCodeValue());
 	}
 	@Bean
 	public RestTemplate restTemplate() {
